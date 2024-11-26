@@ -1,0 +1,32 @@
+{%extends "base1.html.twig" %}
+{%block section %}
+Liste des jobes= {{aa|length}}
+<table border="1">
+    <tr>
+        <th>Id</th><th>Picture</th>
+        <th>username</th><th>email</th>
+        <th>Details</th>
+    </tr>
+    {% set totalBooks=0 %}
+    {% for a in aa %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td><img src="{{asset(a.picture)}}" width="20" height="20"></td>
+        <td>{{a.username |upper}}</td>
+        <td>{{a.email}}</td>
+        
+        <td><a href="{{path('Det',{'ii':a.id})}}">Detail</a></td>
+        {%if a.nb_books==0  %}
+        <td>
+            <form action="{{path('Add',{'ii':a.id})}}">
+                <input type="submit" value="Add Book">
+            </form>
+        </td>
+        {%endif%}
+    </tr>
+    {% set totalBooks=totalBooks+ a.nb_books %}
+    {%else%} Tableau empty
+    {% endfor %}
+</table>
+<p>Le nbe total est <b>{{totalBooks}}</b></p>
+{%endblock%}

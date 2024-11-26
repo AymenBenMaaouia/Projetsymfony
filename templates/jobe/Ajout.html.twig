@@ -1,0 +1,20 @@
+{% extends "base1.html.twig" %}
+{%block body %}
+{#{{form(ff)}} #}
+{{form_start(ff,{'attr':{'novalidate':'novalidate'}})}}
+    {{form_label(ff.username,"Nom")}}
+    {{form_widget(ff.username,{'attr':{
+        'class':'form-control'}})}}
+    {{form_errors(ff.username)}}
+    <br>
+    {{form_label(ff.email)}}
+    {{form_widget(ff.email,{'attr':{
+                'placeholder':'nom.prenom@esprit.tn',
+                'class':'form-control'}})}}
+    
+    {{form_errors(ff.email,{'attr':{'class':'text-danger mt-1'}})}}
+   
+    {{form_widget(ff.Ajout,{'attr':{'class':'btn btn-primary'}})}}
+    
+{{form_end(ff)}}
+{% endblock %}

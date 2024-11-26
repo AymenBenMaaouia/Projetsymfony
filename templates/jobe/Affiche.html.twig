@@ -1,0 +1,26 @@
+{% extends "base1.html.twig" %}
+
+{% block body %}
+<center>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Details</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        {% for aa in a %}
+        <tr>
+            <td>{{ aa.id }}</td>
+            <td>{{ aa.username }}</td>
+            <td>{{ aa.email }}</td>
+            <td><a href="{{ path('Detail', {'ii': aa.id}) }}">Detail</a></td>
+            <td><a href="{{ path('Delete', {'ii': aa.id}) }}">Delete</a></td>
+            <td><a href="{{ path('Update', {'id': aa.id}) }}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+{% endblock %}
